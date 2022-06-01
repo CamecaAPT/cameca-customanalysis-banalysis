@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows7.0</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<Platforms>x64</Platforms>
+		<Nullable>enable</Nullable>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<RootNamespace>Cameca.CustomAnalysis.BAnalysis</RootNamespace>
+		<AssemblyName>Cameca.CustomAnalysis.BAnalysis</AssemblyName>
+	</PropertyGroup>
+
+	<PropertyGroup Label="Package">
+		<Title>Cameca.CustomAnalysis.BAnalysis</Title>
+		<Authors>CAMECA Instruments Inc.</Authors>
+		<Company>CAMECA Instruments, Inc.</Company>
+		<Product>AP Suite</Product>
+		<Description>Custom analysis for yield specimen analysis</Description>
+		<Copyright>Copyright 2022 © CAMECA Instruments Inc. All rights reserved.</Copyright>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<RepositoryUrl>https://github.com/CamecaAPT/cameca-customanalysis-banalysis</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+	</PropertyGroup>
+
+	<ItemGroup Label="Package Dependencies">
+		<PackageReference Include="AsyncAwaitBestPractices.MVVM" Version="6.0.4" />
+		<PackageReference Include="Cameca.CustomAnalysis.Utilities" Version="0.1.0-alpha.22" />
+		<PackageReference Include="Cameca.Extensions.Controls" Version="0.1.0-alpha.4" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\README.md" Pack="True" PackagePath="\" />
+		<None Include="..\LICENSE" Pack="True" PackagePath="\" />
+	</ItemGroup>
+</Project>
