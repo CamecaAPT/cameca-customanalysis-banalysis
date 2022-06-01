@@ -17,6 +17,7 @@
 		<Product>AP Suite</Product>
 		<Description>Custom analysis for yield specimen analysis</Description>
 		<Copyright>Copyright 2022 © CAMECA Instruments Inc. All rights reserved.</Copyright>
+		<PackageIcon>Cameca.png</PackageIcon>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -29,13 +30,14 @@
 
 	<ItemGroup Label="Package Dependencies">
 		<PackageReference Include="AsyncAwaitBestPractices.MVVM" Version="6.0.4" />
-		<PackageReference Include="Cameca.CustomAnalysis.Utilities" Version="0.1.0-alpha.22" />
-		<PackageReference Include="Cameca.Extensions.Controls" Version="0.1.0-alpha.4" />
+		<PackageReference Include="Cameca.CustomAnalysis.Utilities" Version="1.0.0" />
+		<PackageReference Include="Cameca.Extensions.Controls" Version="1.0.0" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<None Include="..\README.md" Pack="True" PackagePath="\" />
 		<None Include="..\LICENSE" Pack="True" PackagePath="\" />
+		<None Include="..\Cameca.png" Pack="True" PackagePath="\" />
 	</ItemGroup>
 </Project>
