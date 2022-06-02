@@ -28,6 +28,17 @@
 		<RepositoryType>git</RepositoryType>
 	</PropertyGroup>
 
+	<PropertyGroup Label="Direct Output">
+		<OutputPath>$(LOCALAPPDATA)\CAMECA\AP Suite\Extensions\Cameca.CustomAnalysis.BAnalysis</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Images\BAnalysisIcon.png" />
+	</ItemGroup>
+
 	<ItemGroup Label="Package Dependencies">
 		<PackageReference Include="AsyncAwaitBestPractices.MVVM" Version="6.0.4" />
 		<PackageReference Include="Cameca.CustomAnalysis.Utilities" Version="1.0.0" />
@@ -39,5 +50,9 @@
 		<None Include="..\README.md" Pack="True" PackagePath="\" />
 		<None Include="..\LICENSE" Pack="True" PackagePath="\" />
 		<None Include="..\Cameca.png" Pack="True" PackagePath="\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Images\BAnalysisIcon.png" />
 	</ItemGroup>
 </Project>
