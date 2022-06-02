@@ -5,7 +5,7 @@ using Prism.Modularity;
 
 namespace Cameca.CustomAnalysis.BAnalysis;
 
-internal class YieldSpecimenAnalysis1Module : IModule
+public class YieldSpecimenAnalysis1Module : IModule
 {
     public void RegisterTypes(IContainerRegistry containerRegistry)
     {
