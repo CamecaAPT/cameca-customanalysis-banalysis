@@ -9,7 +9,7 @@ public class YieldSpecimenAnalysis1Module : IModule
 {
     public void RegisterTypes(IContainerRegistry containerRegistry)
     {
-        containerRegistry.RegisterCoreServices();
+        containerRegistry.AddCustomAnalysisUtilities();
         containerRegistry.Register<YieldSpecimenAnalysis1>();
 
         containerRegistry.Register<object, YieldSpecimenAnalysis1Node>(YieldSpecimenAnalysis1Node.UniqueId);
