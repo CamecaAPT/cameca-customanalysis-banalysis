@@ -40,30 +40,30 @@ internal class YieldSpecimenAnalysis1Node : AnalysisNodeBase
 		return await yieldSpecimenAnalysis.Run(InstanceId, ionData, Options);
 	}
 
-	protected override byte[]? GetSaveContent()
-	{
-		var serializer = new XmlSerializer(typeof(YieldSpecimenAnalysis1Options));
-		using var stringWriter = new StringWriter();
-		serializer.Serialize(stringWriter, Options);
-		return Encoding.UTF8.GetBytes(stringWriter.ToString());
-	}
+    protected override byte[]? GetSaveContent()
+    {
+        var serializer = new XmlSerializer(typeof(YieldSpecimenAnalysis1Options));
+        using var stringWriter = new StringWriter();
+        serializer.Serialize(stringWriter, Options);
+        return Encoding.UTF8.GetBytes(stringWriter.ToString());
+    }
 
-	protected override void OnLoaded(NodeLoadedEventArgs eventArgs)
-	{
-		if (eventArgs.Data is not { } data) return;
-		var xmlData = Encoding.UTF8.GetString(data);
-		var serializer = new XmlSerializer(typeof(YieldSpecimenAnalysis1Options));
-		using var stringReader = new StringReader(xmlData);
-		if (serializer.Deserialize(stringReader) is YieldSpecimenAnalysis1Options loadedOptions)
-		{
-			Options = loadedOptions;
-		}
-	}
 
-	protected override void OnInstantiated(INodeInstantiatedEventArgs eventArgs)
+    protected override void OnCreated(NodeCreatedEventArgs eventArgs)
 	{
-		base.OnInstantiated(eventArgs);
+		base.OnCreated(eventArgs);
 		Options.PropertyChanged += OptionsOnPropertyChanged;
+
+        if (eventArgs.Trigger == EventTrigger.Load && eventArgs.Data is { } data)
+        {
+            var xmlData = Encoding.UTF8.GetString(data);
+            var serializer = new XmlSerializer(typeof(YieldSpecimenAnalysis1Options));
+            using var stringReader = new StringReader(xmlData);
+            if (serializer.Deserialize(stringReader) is YieldSpecimenAnalysis1Options loadedOptions)
+            {
+                Options = loadedOptions;
+            }
+		}
 	}
 
 	private void OptionsOnPropertyChanged(object? sender, PropertyChangedEventArgs e)
