@@ -4,9 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using AsyncAwaitBestPractices.MVVM;
 using Cameca.CustomAnalysis.Interface;
 using Cameca.CustomAnalysis.Utilities;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Cameca.CustomAnalysis.BAnalysis;
 
@@ -17,7 +17,7 @@ internal class YieldSpecimenAnalysis1ViewModel : AnalysisViewModelBase<YieldSpec
 	private readonly IRenderDataFactory renderDataFactory;
 	private bool optionsChanged = false;
 
-	private readonly AsyncCommand runCommand;
+	private readonly AsyncRelayCommand runCommand;
 	public ICommand RunCommand => runCommand;
 
 	public YieldSpecimenAnalysis1Options Options => Node!.Options;
@@ -37,7 +37,7 @@ internal class YieldSpecimenAnalysis1ViewModel : AnalysisViewModelBase<YieldSpec
 		IRenderDataFactory renderDataFactory) : base(services)
 	{
 		this.renderDataFactory = renderDataFactory;
-		runCommand = new AsyncCommand(OnRun, UpdateSelectedEventCountsEnabled);
+		runCommand = new AsyncRelayCommand(OnRun, UpdateSelectedEventCountsEnabled);
 	}
 
 	protected override void OnCreated(ViewModelCreatedEventArgs eventArgs)
@@ -98,9 +98,9 @@ internal class YieldSpecimenAnalysis1ViewModel : AnalysisViewModelBase<YieldSpec
 	private void OptionsOnPropertyChanged(object? sender, PropertyChangedEventArgs e)
 	{
 		optionsChanged = true;
-		runCommand.RaiseCanExecuteChanged();
+		runCommand.NotifyCanExecuteChanged();
 	}
 
 
-	private bool UpdateSelectedEventCountsEnabled(object? _) => !Tabs.Any() || optionsChanged;
+	private bool UpdateSelectedEventCountsEnabled() => !Tabs.Any() || optionsChanged;
 }
