@@ -163,31 +163,42 @@ internal class YieldSpecimenAnalysis1
 
 		var B_formula = IonFormulaBuilder.Parse("B");
 		var Ni_formula = IonFormulaBuilder.Parse("Ni");
-		var SiP1_formula = IonFormulaBuilder.Parse("SiP1");
-		var SiP2_formula = IonFormulaBuilder.Parse("SiP2");
+		var SiP1_name = "SiP1";
+		var SiP2_name = "SiP2";
 
-		var formulas = ionData.Ions.Select(x => x.Formula).ToList();
-		for (int iName = 0; iName < formulas.Count; ++iName)
+		int numIonTypes = ionData.Ions.Count;
+        for (int iIon = 0; iIon < numIonTypes; ++iIon)
 		{
-			if (formulas.Contains(B_formula))
+			var formula = ionData.Ions[iIon].Formula;
+			var name = ionData.Ions[iIon].Name;
+			if(formula.Count != 0)
 			{
-				IonType_B = iName;
-			}
-			if (formulas.Contains(Ni_formula))
+				if(formula == B_formula)
+				{
+                    IonType_B = iIon;
+                }
+				else if(formula == Ni_formula)
+				{
+					IonType_Ni = iIon;
+				}
+            }
+			else if(name != null)
 			{
-				IonType_Ni = iName;
+				if (name == SiP1_name)
+				{
+					IonType_SiP1 = iIon;
+
+                }
+				else if(name == SiP2_name)
+				{
+					IonType_SiP2 = iIon;
+
+                }
 			}
-			if (formulas.Contains(SiP1_formula))
-			{
-				IonType_SiP1 = iName;
-			}
-			if (formulas.Contains(SiP2_formula))
-			{
-				IonType_SiP2 = iName;
-			}
+
 		}
 
-		bool success = true;
+        bool success = true;
 		if (IonType_B == -1)
 		{
 			success = false;
