@@ -52,8 +52,6 @@ internal class YieldSpecimenAnalysis1
 			return results;
 		}
 
-
-
 		//Do a Bulk Composition Analysis
 		IList<RawCountsModel> rawCountsList = GetRawComposition(ionData);
 		ShowRawComposition(rawCountsList);
